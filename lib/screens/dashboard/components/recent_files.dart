@@ -19,6 +19,7 @@ class RecentFiles extends StatelessWidget {
         borderRadius: const BorderRadius.all(Radius.circular(10)),
       ),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
@@ -26,6 +27,7 @@ class RecentFiles extends StatelessWidget {
             style: Theme.of(context).textTheme.subtitle1,
           ),
           SizedBox(
+            height: 200,
             width: double.infinity,
             child: DataTable2(
               columnSpacing: defaultPadding,

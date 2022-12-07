@@ -11,11 +11,13 @@ import 'components/storage_details.dart';
 class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
     return SafeArea(
       child: SingleChildScrollView(
         primary: false,
         padding: EdgeInsets.all(defaultPadding),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Header(),
             SizedBox(height: defaultPadding),
@@ -25,6 +27,7 @@ class DashboardScreen extends StatelessWidget {
                 Expanded(
                   flex: 5,
                   child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       MyFiles(),
                       SizedBox(height: defaultPadding),
