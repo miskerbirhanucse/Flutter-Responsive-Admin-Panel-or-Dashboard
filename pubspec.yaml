@@ -18,7 +18,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.18.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -28,16 +28,26 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.3
 
+  dio: ^4.0.6
+  flutter_bloc: ^8.1.1
   google_fonts: ^2.1.0
   flutter_svg: ^0.22.0
   fl_chart: ^0.36.1
-  provider: ^5.0.0
+  provider: ^6.0.0
   data_table_2: ^2.0.3
+  freezed_annotation: ^2.2.0
+  flutter_dotenv: ^5.0.2
+  json_annotation: ^4.7.0
+  flutter_secure_storage: ^6.0.0
+  get_it: ^7.2.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  flutter_lints: ^2.0.0
+  build_runner: ^2.3.2
+  freezed: ^2.2.1
+  json_serializable: ^6.5.4
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -52,6 +62,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - .env
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

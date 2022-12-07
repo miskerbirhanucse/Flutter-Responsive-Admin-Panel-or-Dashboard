@@ -1,0 +1,51 @@
+import 'package:admin/utils/style_constants.dart';
+import 'package:flutter/material.dart';
+
+import 'colors.dart';
+
+class CustomTextField extends StatelessWidget {
+  const CustomTextField(
+      {super.key,
+      required this.title,
+      this.obscureText = false,
+      required this.controller});
+
+  final String title;
+  final bool obscureText;
+  final TextEditingController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 55,
+      width: 250,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        color: CustomColor.accentWhite,
+      ),
+      child: Row(
+        children: [
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 8.0, right: 8),
+              child: TextFormField(
+                controller: controller,
+                obscureText: obscureText,
+                style: TextStyle(color: Colors.black),
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: const Color(0xffF5F5F5),
+                  hintText: title,
+                  hintStyle: textDefault.copyWith(
+                    color: const Color(0xff8E8E8E),
+                  ),
+                  border: InputBorder.none,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

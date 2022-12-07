@@ -1,35 +1,27 @@
 import 'package:admin/constants.dart';
 import 'package:admin/controllers/MenuController.dart';
-import 'package:admin/screens/main/main_screen.dart';
+import 'package:admin/src/app.dart';
+import 'package:admin/src/auth/bloc/auth.dart';
+import 'package:admin/src/auth/presentation/login_screen.dart';
+import 'package:admin/src/main/main_screen.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-void main() {
-  runApp(MyApp());
+import 'network/client.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
+  _setupApiClient();
+  runApp(App());
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Admin Panel',
-      theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: bgColor,
-        textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)
-            .apply(bodyColor: Colors.white),
-        canvasColor: secondaryColor,
-      ),
-      home: MultiProvider(
-        providers: [
-          ChangeNotifierProvider(
-            create: (context) => MenuController(),
-          ),
-        ],
-        child: MainScreen(),
-      ),
-    );
-  }
+void _setupApiClient() {
+  final apiClient = ApiClientImpl(Dio());
+  GetIt.I.registerSingleton<ApiClient>(apiClient);
 }
