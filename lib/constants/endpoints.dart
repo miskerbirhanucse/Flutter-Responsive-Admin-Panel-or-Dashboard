@@ -5,7 +5,7 @@ final localUrl = 'http://${Credentials.baseUrl}';
 final socketUrl = Credentials.socketUrl;
 
 class AuthEndpoints {
-  static String base = '$localUrl/auth';
+  static String base = '$localUrl/api/auth';
   static String login = '$base/login';
   static String sign_up = '$base/register';
 }

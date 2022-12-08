@@ -4,15 +4,22 @@ import 'package:flutter/material.dart';
 import 'colors.dart';
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField(
-      {super.key,
-      required this.title,
-      this.obscureText = false,
-      required this.controller});
+  const CustomTextField({
+    super.key,
+    required this.title,
+    this.obscureText = false,
+    required this.controller,
+    this.showSuffixIcon = false,
+    this.onPressedForPassword,
+    this.isShowPassword,
+  });
 
   final String title;
   final bool obscureText;
   final TextEditingController controller;
+  final bool showSuffixIcon;
+  final Function()? onPressedForPassword;
+  final bool? isShowPassword;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +47,20 @@ class CustomTextField extends StatelessWidget {
                     color: const Color(0xff8E8E8E),
                   ),
                   border: InputBorder.none,
+                  suffixIcon: showSuffixIcon
+                      ? isShowPassword != null
+                          ? IconButton(
+                              icon: Icon(
+                                // Based on passwordVisible state choose the icon
+                                isShowPassword!
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                                color: Theme.of(context).primaryColor,
+                              ),
+                              onPressed: onPressedForPassword,
+                            )
+                          : null
+                      : null,
                 ),
               ),
             ),

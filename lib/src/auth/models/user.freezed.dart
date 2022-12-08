@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'user.dart';
 
@@ -199,7 +199,7 @@ mixin _$User {
   int get id => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   bool get status => throw _privateConstructorUsedError;
-  String get phone => throw _privateConstructorUsedError;
+  String? get phone => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   List<Role>? get roles => throw _privateConstructorUsedError;
 
@@ -217,7 +217,7 @@ abstract class $UserCopyWith<$Res> {
       {int id,
       String email,
       bool status,
-      String phone,
+      String? phone,
       String name,
       List<Role>? roles});
 }
@@ -238,7 +238,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? id = null,
     Object? email = null,
     Object? status = null,
-    Object? phone = null,
+    Object? phone = freezed,
     Object? name = null,
     Object? roles = freezed,
   }) {
@@ -255,10 +255,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as bool,
-      phone: null == phone
+      phone: freezed == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -281,7 +281,7 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       {int id,
       String email,
       bool status,
-      String phone,
+      String? phone,
       String name,
       List<Role>? roles});
 }
@@ -298,7 +298,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
     Object? id = null,
     Object? email = null,
     Object? status = null,
-    Object? phone = null,
+    Object? phone = freezed,
     Object? name = null,
     Object? roles = freezed,
   }) {
@@ -315,10 +315,10 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as bool,
-      phone: null == phone
+      phone: freezed == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -338,7 +338,7 @@ class _$_User with DiagnosticableTreeMixin implements _User {
       {required this.id,
       required this.email,
       required this.status,
-      required this.phone,
+      this.phone,
       required this.name,
       final List<Role>? roles})
       : _roles = roles;
@@ -352,7 +352,7 @@ class _$_User with DiagnosticableTreeMixin implements _User {
   @override
   final bool status;
   @override
-  final String phone;
+  final String? phone;
   @override
   final String name;
   final List<Role>? _roles;
@@ -360,6 +360,7 @@ class _$_User with DiagnosticableTreeMixin implements _User {
   List<Role>? get roles {
     final value = _roles;
     if (value == null) return null;
+    if (_roles is EqualUnmodifiableListView) return _roles;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -419,7 +420,7 @@ abstract class _User implements User {
       {required final int id,
       required final String email,
       required final bool status,
-      required final String phone,
+      final String? phone,
       required final String name,
       final List<Role>? roles}) = _$_User;
 
@@ -432,7 +433,7 @@ abstract class _User implements User {
   @override
   bool get status;
   @override
-  String get phone;
+  String? get phone;
   @override
   String get name;
   @override

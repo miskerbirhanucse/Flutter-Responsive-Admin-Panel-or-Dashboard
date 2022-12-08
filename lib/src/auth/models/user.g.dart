@@ -22,7 +22,7 @@ _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
       id: json['id'] as int,
       email: json['email'] as String,
       status: json['status'] as bool,
-      phone: json['phone'] as String,
+      phone: json['phone'] as String?,
       name: json['name'] as String,
       roles: (json['roles'] as List<dynamic>?)
           ?.map((e) => Role.fromJson(e as Map<String, dynamic>))

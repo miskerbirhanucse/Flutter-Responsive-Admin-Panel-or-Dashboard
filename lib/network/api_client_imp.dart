@@ -13,7 +13,7 @@ class ApiClientImpl extends ApiClient {
       {required String email, required String password}) async {
     try {
       final url = AuthEndpoints.login;
-
+      print(url);
       final response =
           await dio.post(url, data: {'email': email, 'password': password});
       print(response);

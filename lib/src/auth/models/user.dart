@@ -21,7 +21,7 @@ class User with _$User {
     required int id,
     required String email,
     required bool status,
-    required String phone,
+    String? phone,
     required String name,
     List<Role>? roles,
   }) = _User;
