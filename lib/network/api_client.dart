@@ -1,4 +1,5 @@
 import 'package:admin/src/auth/models/user.dart';
+import 'package:admin/src/user/models/users.dart';
 import 'package:dio/dio.dart';
 
 import 'core/core.dart';
@@ -46,4 +47,6 @@ abstract class ApiClient {
     required String name,
     required String phone,
   });
+
+  Future<ApiResult<Users>> getUsers(int page);
 }

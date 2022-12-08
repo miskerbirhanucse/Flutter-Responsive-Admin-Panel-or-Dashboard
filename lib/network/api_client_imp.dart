@@ -1,4 +1,5 @@
 import 'package:admin/src/auth/models/user.dart';
+import 'package:admin/src/user/models/users.dart';
 import 'package:dio/dio.dart';
 
 import '../constants/endpoints.dart';
@@ -41,6 +42,19 @@ class ApiClientImpl extends ApiClient {
       });
       return const ApiResult.success(data: true);
     } catch (e) {
+      return ApiResult.failure(error: NetworkExceptions.fromError(e));
+    }
+  }
+
+  @override
+  Future<ApiResult<Users>> getUsers(int page) async {
+    try {
+      final url = UserEndpoints.getUsers;
+      final response = await dio.get('$url?page=$page');
+      final Users userResponse = Users.fromJson(response.data);
+      return ApiResult.success(data: userResponse);
+    } on DioError catch (e) {
+      // print(e.response!.data);
       return ApiResult.failure(error: NetworkExceptions.fromError(e));
     }
   }

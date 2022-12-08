@@ -7,7 +7,7 @@ import '../../../network/api_client.dart';
 import 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
-  AuthCubit(this._apiClient) : super(const AuthState.initial());
+  AuthCubit(this._apiClient) : super(const AuthState.loading());
   final ApiClient _apiClient;
   static const storage = FlutterSecureStorage();
 
@@ -41,6 +41,7 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> checkAuthStatus() async {
+    emit(const AuthState.loading());
     final isLoggedIn = await storage.read(key: AuthKey.key);
     if (isLoggedIn == null) {
       emit(const AuthState.unauthenticated());
@@ -51,6 +52,7 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> logout() async {
+    emit(const AuthState.loading());
     await storage.delete(key: AuthKey.key);
     _apiClient.authToken = null;
     emit(const AuthState.unauthenticated());

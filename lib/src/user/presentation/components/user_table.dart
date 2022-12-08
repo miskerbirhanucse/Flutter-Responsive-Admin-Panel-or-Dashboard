@@ -1,13 +1,15 @@
+import 'package:admin/constants.dart';
 import 'package:admin/models/RecentFile.dart';
+import 'package:admin/src/user/models/user_data.dart';
+import 'package:admin/utils/colors.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../constants.dart';
-
-class RecentFiles extends StatelessWidget {
-  const RecentFiles({Key? key, required this.title}) : super(key: key);
+class UserTable extends StatelessWidget {
+  const UserTable({Key? key, required this.title}) : super(key: key);
   final String title;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,18 +34,24 @@ class RecentFiles extends StatelessWidget {
               minWidth: 600,
               columns: [
                 DataColumn(
-                  label: Text("File Name"),
+                  label: Text("Name"),
                 ),
                 DataColumn(
-                  label: Text("Date"),
+                  label: Text("Status"),
                 ),
                 DataColumn(
-                  label: Text("Size"),
+                  label: Text("Email"),
+                ),
+                DataColumn(
+                  label: Text("Phone"),
+                ),
+                DataColumn(
+                  label: Text("Action"),
                 ),
               ],
               rows: List.generate(
-                demoRecentFiles.length,
-                (index) => recentFileDataRow(demoRecentFiles[index]),
+                demoUser.length,
+                (index) => recentUserRow(demoUser[index]),
               ),
             ),
           ),
@@ -53,26 +61,28 @@ class RecentFiles extends StatelessWidget {
   }
 }
 
-DataRow recentFileDataRow(RecentFile fileInfo) {
+DataRow recentUserRow(UserData fileInfo) {
   return DataRow(
     cells: [
-      DataCell(
-        Row(
-          children: [
-            SvgPicture.asset(
-              fileInfo.icon!,
-              height: 30,
-              width: 30,
+      DataCell(Text(fileInfo.name!)),
+      DataCell(Text(fileInfo.status!)),
+      DataCell(Text(fileInfo.email!)),
+      DataCell(Text(fileInfo.phone!)),
+      DataCell(Row(
+        children: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.edit),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.delete,
+              color: Colors.red,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
-              child: Text(fileInfo.title!),
-            ),
-          ],
-        ),
-      ),
-      DataCell(Text(fileInfo.date!)),
-      DataCell(Text(fileInfo.size!)),
+          )
+        ],
+      )),
     ],
   );
 }

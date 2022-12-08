@@ -10,7 +10,7 @@ class AuthEndpoints {
   static String sign_up = '$base/register';
 }
 
-class SocketEndPoints {
-  static String base = socketUrl;
-  static String client = '$socketUrl/client';
+class UserEndpoints {
+  static String base = '$localUrl/api';
+  static String getUsers = '$base/user';
 }
