@@ -36,4 +36,14 @@ class UserCubit extends Cubit<UserState> {
       failure: (error) => Failure(error.toString()),
     );
   }
+
+  Future<void> deleteUser({required int id}) async {
+    final apiResult = await _apiClient.deleteUser(id: id);
+    apiResult.when(
+      success: (data) {
+        getUsers();
+      },
+      failure: (error) => emit(Failure(error.toString())),
+    );
+  }
 }

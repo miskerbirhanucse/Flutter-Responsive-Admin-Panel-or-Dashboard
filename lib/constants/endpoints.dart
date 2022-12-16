@@ -13,4 +13,7 @@ class AuthEndpoints {
 class UserEndpoints {
   static String base = '$localUrl/api';
   static String getUsers = '$base/user';
+  static String createUser = '$base/user';
+
+  static String changeUserStatus(int id) => '$getUsers/$id/toggle_status';
 }

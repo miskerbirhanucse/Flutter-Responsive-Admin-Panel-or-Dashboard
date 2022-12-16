@@ -23,7 +23,7 @@ abstract class ApiClient {
     _dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) {
         if (_authToken != null) {
-          options.headers['Authorization'] = 'Bearer $_authToken';
+          options.headers['x-auth-token'] = _authToken;
         }
 
         final body = options.data;
@@ -48,5 +48,23 @@ abstract class ApiClient {
     required String phone,
   });
 
+  Future<ApiResult<bool>> adminRegister({
+    required String email,
+    required String name,
+    required String phone,
+  });
+
+  Future<ApiResult<User>> changeUserStatus(int id);
+
+  Future<ApiResult<User>> getUser(int id);
+
+  Future<ApiResult<bool>> deleteUser({required int id});
+
   Future<ApiResult<Users>> getUsers(int page);
+
+  Future<ApiResult<User>> updateProfile(
+      {required String email,
+      required String name,
+      required String phone,
+      required int id});
 }

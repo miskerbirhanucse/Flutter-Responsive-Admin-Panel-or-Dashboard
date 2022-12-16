@@ -19,10 +19,10 @@ class UserResponse with _$UserResponse {
 class User with _$User {
   const factory User({
     required int id,
-    required String email,
-    required bool status,
+    String? email,
+    bool? status,
     String? phone,
-    required String name,
+    String? name,
     List<Role>? roles,
   }) = _User;
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

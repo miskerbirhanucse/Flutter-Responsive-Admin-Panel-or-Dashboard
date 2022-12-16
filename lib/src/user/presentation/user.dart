@@ -1,9 +1,9 @@
-import 'package:admin/controllers/MenuController.dart';
 import 'package:admin/responsive.dart';
 import 'package:admin/src/main/components/side_menu.dart';
+import 'package:admin/src/user/bloc/user_cubit.dart';
 import 'package:admin/src/user/presentation/user_dashboard.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class User extends StatelessWidget {
   const User({Key? key}) : super(key: key);

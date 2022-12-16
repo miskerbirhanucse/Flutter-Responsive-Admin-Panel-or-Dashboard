@@ -2,6 +2,8 @@ import 'package:admin/constants.dart';
 import 'package:admin/controllers/MenuController.dart';
 import 'package:admin/network/api_client.dart';
 import 'package:admin/src/auth/presentation/login_screen.dart';
+import 'package:admin/src/user/bloc/user_cubit.dart';
+import 'package:admin/src/user/bloc/user_detail_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -24,6 +26,12 @@ class App extends StatelessWidget {
         BlocProvider(
           create: (_) => AuthCubit(apiClient),
         ),
+        BlocProvider(
+          create: (_) => UserCubit(apiClient),
+        ),
+        BlocProvider(
+          create: (_) => UserDetailCubit(apiClient),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -41,6 +49,9 @@ class App extends StatelessWidget {
             ),
             BlocProvider(
               create: (_) => AuthCubit(apiClient),
+            ),
+            BlocProvider(
+              create: (_) => UserCubit(apiClient),
             ),
           ],
           child: LoginScreen(),

@@ -197,10 +197,10 @@ User _$UserFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$User {
   int get id => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
-  bool get status => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
+  bool? get status => throw _privateConstructorUsedError;
   String? get phone => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
   List<Role>? get roles => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -215,10 +215,10 @@ abstract class $UserCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String email,
-      bool status,
+      String? email,
+      bool? status,
       String? phone,
-      String name,
+      String? name,
       List<Role>? roles});
 }
 
@@ -236,10 +236,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   @override
   $Res call({
     Object? id = null,
-    Object? email = null,
-    Object? status = null,
+    Object? email = freezed,
+    Object? status = freezed,
     Object? phone = freezed,
-    Object? name = null,
+    Object? name = freezed,
     Object? roles = freezed,
   }) {
     return _then(_value.copyWith(
@@ -247,22 +247,22 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      email: null == email
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
+              as String?,
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
       phone: freezed == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       roles: freezed == roles
           ? _value.roles
           : roles // ignore: cast_nullable_to_non_nullable
@@ -279,10 +279,10 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String email,
-      bool status,
+      String? email,
+      bool? status,
       String? phone,
-      String name,
+      String? name,
       List<Role>? roles});
 }
 
@@ -296,10 +296,10 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
   @override
   $Res call({
     Object? id = null,
-    Object? email = null,
-    Object? status = null,
+    Object? email = freezed,
+    Object? status = freezed,
     Object? phone = freezed,
-    Object? name = null,
+    Object? name = freezed,
     Object? roles = freezed,
   }) {
     return _then(_$_User(
@@ -307,22 +307,22 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      email: null == email
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
+              as String?,
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
       phone: freezed == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       roles: freezed == roles
           ? _value._roles
           : roles // ignore: cast_nullable_to_non_nullable
@@ -336,10 +336,10 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
 class _$_User with DiagnosticableTreeMixin implements _User {
   const _$_User(
       {required this.id,
-      required this.email,
-      required this.status,
+      this.email,
+      this.status,
       this.phone,
-      required this.name,
+      this.name,
       final List<Role>? roles})
       : _roles = roles;
 
@@ -348,13 +348,13 @@ class _$_User with DiagnosticableTreeMixin implements _User {
   @override
   final int id;
   @override
-  final String email;
+  final String? email;
   @override
-  final bool status;
+  final bool? status;
   @override
   final String? phone;
   @override
-  final String name;
+  final String? name;
   final List<Role>? _roles;
   @override
   List<Role>? get roles {
@@ -418,10 +418,10 @@ class _$_User with DiagnosticableTreeMixin implements _User {
 abstract class _User implements User {
   const factory _User(
       {required final int id,
-      required final String email,
-      required final bool status,
+      final String? email,
+      final bool? status,
       final String? phone,
-      required final String name,
+      final String? name,
       final List<Role>? roles}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
@@ -429,13 +429,13 @@ abstract class _User implements User {
   @override
   int get id;
   @override
-  String get email;
+  String? get email;
   @override
-  bool get status;
+  bool? get status;
   @override
   String? get phone;
   @override
-  String get name;
+  String? get name;
   @override
   List<Role>? get roles;
   @override

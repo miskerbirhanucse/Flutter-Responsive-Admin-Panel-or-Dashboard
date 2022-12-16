@@ -10,7 +10,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
   _setupApiClient();
-  runApp(App());
+  runApp(const App());
 }
 
 void _setupApiClient() {

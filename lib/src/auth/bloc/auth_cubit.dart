@@ -40,6 +40,24 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
+  Future<void> adminRegister(
+      {required String email,
+      required String name,
+      required String phone}) async {
+    emit(const AuthState.loading());
+    final apiResult = await _apiClient.adminRegister(
+      email: email,
+      name: name,
+      phone: phone,
+    );
+    apiResult.when(
+      success: (data) => emit(
+        const AuthState.authenticated(),
+      ),
+      failure: (error) => AuthState.failure(error.toString()),
+    );
+  }
+
   Future<void> checkAuthStatus() async {
     emit(const AuthState.loading());
     final isLoggedIn = await storage.read(key: AuthKey.key);
