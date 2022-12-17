@@ -7,6 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/auth.dart';
 
 class LoginScreen extends StatefulWidget {
+  static String id = 'LoginScreen';
+
   const LoginScreen({Key? key}) : super(key: key);
 
   @override

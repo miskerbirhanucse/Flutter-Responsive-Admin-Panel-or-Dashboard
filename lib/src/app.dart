@@ -1,16 +1,18 @@
-import 'package:admin/constants.dart';
-import 'package:admin/controllers/MenuController.dart';
-import 'package:admin/network/api_client.dart';
-import 'package:admin/src/auth/presentation/login_screen.dart';
-import 'package:admin/src/user/bloc/user_cubit.dart';
-import 'package:admin/src/user/bloc/user_detail_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
+import '../constants.dart';
+import '../controllers/MenuController.dart';
+import '../network/api_client.dart';
 import 'auth/bloc/auth.dart';
+import 'auth/presentation/login_screen.dart';
+import 'user/bloc/user_cubit.dart';
+import 'user/bloc/user_detail_cubit.dart';
+import 'user/presentation/create_user.dart';
+import 'user/presentation/user_dashboard.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -42,6 +44,15 @@ class App extends StatelessWidget {
               .apply(bodyColor: Colors.white),
           canvasColor: secondaryColor,
         ),
+        initialRoute: LoginScreen.id,
+        routes: {
+          LoginScreen.id: (context) => const LoginScreen(),
+          CreateUser.id: (context) => CreateUser(
+                args: ModalRoute.of(context)!.settings.arguments
+                    as Map<String, dynamic>,
+              ),
+          UserDashboardScreen.id: (context) => const UserDashboardScreen()
+        },
         home: MultiProvider(
           providers: [
             ChangeNotifierProvider(
@@ -54,7 +65,6 @@ class App extends StatelessWidget {
               create: (_) => UserCubit(apiClient),
             ),
           ],
-          child: LoginScreen(),
         ),
       ),
     );

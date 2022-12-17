@@ -42,8 +42,10 @@ class UserTable extends StatelessWidget {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => const CreateUser(
-                        title: "Create User",
-                        buttonText: 'create',
+                        args: {
+                          'title': "Create User",
+                          'buttonText': 'create',
+                        },
                       ),
                     ),
                   );
@@ -112,10 +114,12 @@ DataRow recentUserRow(User fileInfo, BuildContext context) {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => CreateUser(
-                    title: 'Edit User',
-                    buttonText: "update",
-                    isEdit: true,
-                    status: fileInfo.status,
+                    args: {
+                      'title': 'Edit User',
+                      'buttonText': "update",
+                      'isEdit': true,
+                      'status': fileInfo.status,
+                    },
                   ),
                 ),
               );

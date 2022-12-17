@@ -7,17 +7,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 
 class CreateUser extends StatefulWidget {
-  final String title;
-  final String buttonText;
-  final bool isEdit;
-  final bool? status;
+  static String id = 'CreateUser';
+
+  // final String title;
+  // final String buttonText;
+  // final bool isEdit;
+  // final bool? status;
+  final Map<String, dynamic>? args;
 
   const CreateUser({
     Key? key,
-    required this.title,
-    required this.buttonText,
-    this.isEdit = false,
-    this.status,
+    // required this.title,
+    // required this.buttonText,
+    // this.isEdit = false,
+    // this.status,
+    this.args,
   }) : super(key: key);
 
   @override
@@ -95,7 +99,7 @@ class _CreateUserState extends State<CreateUser> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          widget.title,
+                          widget.args!['title'],
                           style: Theme.of(context).textTheme.titleLarge,
                         ),
                         gapH24,
@@ -113,7 +117,7 @@ class _CreateUserState extends State<CreateUser> {
                           controller: phoneController,
                           title: 'Enter phone number',
                         ),
-                        if (widget.isEdit)
+                        if (widget.args!['isEdit'])
                           Column(
                             children: [
                               gapH24,
@@ -164,11 +168,11 @@ class _CreateUserState extends State<CreateUser> {
                         gapH32,
                         Center(
                           child: isLoading
-                              ? CircularProgressIndicator()
+                              ? const CircularProgressIndicator()
                               : Button(
-                                  text: widget.buttonText,
+                                  text: widget.args!['buttonText'],
                                   onPressed: () async {
-                                    if (widget.isEdit) {
+                                    if (widget.args!['isEdit']) {
                                       await BlocProvider.of<UserDetailCubit>(
                                               context)
                                           .updateProfile(
